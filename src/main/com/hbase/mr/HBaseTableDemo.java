@@ -182,12 +182,24 @@ public class HBaseTableDemo {
 		// 设置mapper相关，mapper从hbase输入
 		// 本地环境，而且fs.defaultFS为集群模式的时候，需呀设置addDependencyJars参数为false。
 		// addDependencyJars集群中，参数必须为true。
-		TableMapReduceUtil.initTableMapperJob("data", new Scan(), DemoMapper.class, Text.class, ProductModel.class, job,
+		TableMapReduceUtil.initTableMapperJob("data",
+				new Scan(),
+				DemoMapper.class,
+				Text.class,
+				ProductModel.class,
+				job,
 				false);
 
 		// 设置reducer相关，reducer往hbase输出
 		// 本地环境，而且fs.defaultFS为集群模式的时候，需呀设置addDependencyJars参数为false。
-		TableMapReduceUtil.initTableReducerJob("online_product", DemoReducer.class, job, null, null, null, null, false);
+		TableMapReduceUtil.initTableReducerJob("online_product",
+				DemoReducer.class,
+				job,
+				null,
+				null,
+				null,
+				null,
+				false);
 
 		return job;
 	}
